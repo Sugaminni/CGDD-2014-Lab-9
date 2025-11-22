@@ -121,15 +121,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mouse_sprite_sheet_0
+      name: mouse_run_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 159
-        width: 129
-        height: 145
+        x: 0
+        y: 156
+        width: 162
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -143,15 +143,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouse_sprite_sheet_1
+      name: mouse_run_1
       rect:
         serializedVersion: 2
-        x: 164
-        y: 157
-        width: 127
-        height: 150
+        x: 162
+        y: 156
+        width: 162
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,15 +165,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouse_sprite_sheet_2
+      name: mouse_run_2
       rect:
         serializedVersion: 2
-        x: 326
-        y: 160
-        width: 127
-        height: 145
+        x: 324
+        y: 156
+        width: 162
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,15 +187,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouse_sprite_sheet_3
+      name: mouse_run_3
       rect:
         serializedVersion: 2
-        x: 488
-        y: 159
-        width: 127
-        height: 148
+        x: 486
+        y: 156
+        width: 162
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,15 +209,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouse_sprite_sheet_4
+      name: mouse_fly
       rect:
         serializedVersion: 2
-        x: 2
-        y: 6
-        width: 134
-        height: 144
+        x: 0
+        y: 0
+        width: 162
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,15 +231,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouse_sprite_sheet_5
+      name: mouse_fall
       rect:
         serializedVersion: 2
-        x: 168
-        y: 21
-        width: 133
-        height: 129
+        x: 162
+        y: 0
+        width: 162
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,15 +253,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouse_sprite_sheet_6
+      name: mouse_die_0
       rect:
         serializedVersion: 2
-        x: 333
-        y: 4
-        width: 139
-        height: 141
+        x: 324
+        y: 0
+        width: 162
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,15 +275,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouse_sprite_sheet_7
+      name: mouse_die_1
       rect:
         serializedVersion: 2
-        x: 487
-        y: 4
-        width: 160
-        height: 100
+        x: 486
+        y: 0
+        width: 162
+        height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: be435b45cca0c4d48befa2b10a276e34
     internalID: 0
     vertices: []
     indices: 
@@ -310,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mouse_sprite_sheet_0: 5088775038390502483
-      mouse_sprite_sheet_1: 7991875553357044417
-      mouse_sprite_sheet_2: 1632441717839126578
-      mouse_sprite_sheet_3: 7007753633801278221
-      mouse_sprite_sheet_4: 6306959189345734178
-      mouse_sprite_sheet_5: -6152922438805169212
-      mouse_sprite_sheet_6: 7781407928244255635
-      mouse_sprite_sheet_7: 1896226594046518512
+      mouse_die_0: 7781407928244255635
+      mouse_die_1: 1896226594046518512
+      mouse_fall: -6152922438805169212
+      mouse_fly: 6306959189345734178
+      mouse_run_0: 5088775038390502483
+      mouse_run_1: 7991875553357044417
+      mouse_run_2: 1632441717839126578
+      mouse_run_3: 7007753633801278221
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

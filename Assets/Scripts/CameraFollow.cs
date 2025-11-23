@@ -4,10 +4,13 @@ public class CameraFollow : MonoBehaviour
 {
 
     public GameObject targetObject;
+    private float distanceToTarget;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        distanceToTarget = transform.position.x - targetObject.transform.position.x;
 
     }
 
@@ -16,8 +19,9 @@ public class CameraFollow : MonoBehaviour
     {
         float targetObjectX = targetObject.transform.position.x;
         Vector3 newCameraPosition = transform.position;
-        newCameraPosition.x = targetObjectX;
+        newCameraPosition.x = targetObjectX + distanceToTarget;
         transform.position = newCameraPosition;
+
 
     }
 }

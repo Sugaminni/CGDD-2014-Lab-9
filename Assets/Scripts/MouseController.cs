@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class MouseController : MonoBehaviour
 {
@@ -15,6 +15,7 @@ public class MouseController : MonoBehaviour
     public ParticleSystem jetpack;
     private bool isDead = false;
     private uint coins = 0;
+    public TextMeshProUGUI coinsCollectedLabel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,7 @@ public class MouseController : MonoBehaviour
     void CollectCoin(Collider2D coinCollider)
     {
         coins++;
+        coinsCollectedLabel.text = coins.ToString();
         Destroy(coinCollider.gameObject);
     }
 

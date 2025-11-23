@@ -4,6 +4,8 @@ public class MouseController : MonoBehaviour
 {
 
     public float jetpackForce = 75.0f;
+    public float forwardMovementSpeed = 3.0f;
+
     private Rigidbody2D playerRigidbody;
 
 
@@ -15,12 +17,16 @@ public class MouseController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate() 
+    void FixedUpdate()
     {
-    bool jetpackActive = Input.GetButton("Fire1");
-    if (jetpackActive)
+        bool jetpackActive = Input.GetButton("Fire1");
+        if (jetpackActive)
         {
             playerRigidbody.AddForce(new Vector2(0, jetpackForce));
         }
+        Vector2 newVelocity = playerRigidbody.linearVelocity;
+        newVelocity.x = forwardMovementSpeed;
+        playerRigidbody.linearVelocity = newVelocity;
+
     }
 }

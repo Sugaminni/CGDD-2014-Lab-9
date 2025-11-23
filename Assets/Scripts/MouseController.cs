@@ -22,6 +22,7 @@ public class MouseController : MonoBehaviour
     public AudioClip coinCollectSound;
     public AudioSource jetpackAudio;
     public AudioSource footstepsAudio;
+    public ParallaxScroll parallax;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -136,5 +137,6 @@ public class MouseController : MonoBehaviour
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
         AdjustFootstepsAndJetpackSound(jetpackActive);
+        parallax.offset = transform.position.x;
     }
 }

@@ -12,6 +12,8 @@ public class MouseController : MonoBehaviour
     public LayerMask groundCheckLayerMask;
     private Animator mouseAnimator;
     public ParticleSystem jetpack;
+    private bool isDead = false;
+    private uint coins = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +32,36 @@ public class MouseController : MonoBehaviour
         mouseAnimator.SetBool("isGrounded", isGrounded);
     }
 
+    // Handles collecting coins
+    void CollectCoin(Collider2D coinCollider)
+    {
+        coins++;
+        Destroy(coinCollider.gameObject);
+    }
+
+
+    // Handles collision with lasers and coins
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Coins"))
+        {
+            CollectCoin(collider);
+        }
+        else
+        {
+            HitByLaser(collider);
+        }
+
+    }
+
+    // Marks the player as dead when hit by a laser
+    void HitByLaser(Collider2D laserCollider)
+    {
+        isDead = true;
+        mouseAnimator.SetBool("isDead", true);
+    }
+
+
     // Adjusts the jetpack particle system based on whether the jetpack is active
     void AdjustJetpack(bool jetpackActive)
     {
@@ -46,18 +78,27 @@ public class MouseController : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+    // Ensures mouse movement and jetpack functionality as well as death status
     void FixedUpdate()
     {
         bool jetpackActive = Input.GetButton("Fire1");
+        jetpackActive = jetpackActive && !isDead;
+
         if (jetpackActive)
         {
             playerRigidbody.AddForce(new Vector2(0, jetpackForce));
         }
-        Vector2 newVelocity = playerRigidbody.linearVelocity;
-        newVelocity.x = forwardMovementSpeed;
-        playerRigidbody.linearVelocity = newVelocity;
+
+        if (!isDead)
+        {
+            Vector2 newVelocity = playerRigidbody.linearVelocity;
+            newVelocity.x = forwardMovementSpeed;
+            playerRigidbody.linearVelocity = newVelocity;
+        }
+
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
+
+
     }
 }

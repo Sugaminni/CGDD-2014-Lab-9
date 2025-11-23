@@ -5407,7 +5407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableRooms:
-  - {fileID: 1958066850}
+  - {fileID: 7011466208333806978, guid: 4ddab1658c91d80488c8cb1b85f582e5, type: 3}
   currentRooms:
   - {fileID: 1958066850}
 --- !u!95 &1938530453

@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MouseController : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class MouseController : MonoBehaviour
     private bool isDead = false;
     private uint coins = 0;
     public TextMeshProUGUI coinsCollectedLabel;
+    public Button restartButton;
+    public AudioClip coinCollectSound;
+    public AudioSource jetpackAudio;
+    public AudioSource footstepsAudio;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +29,11 @@ public class MouseController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         mouseAnimator = GetComponent<Animator>();
 
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("RocketMouse");
     }
 
     // Updates the grounded status of the player
@@ -40,8 +51,23 @@ public class MouseController : MonoBehaviour
         coins++;
         coinsCollectedLabel.text = coins.ToString();
         Destroy(coinCollider.gameObject);
+        AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
     }
 
+    // Adjusts the audio sources for footsteps and jetpack based on player status
+    void AdjustFootstepsAndJetpackSound(bool jetpackActive)
+    {
+        footstepsAudio.enabled = !isDead && isGrounded;
+        jetpackAudio.enabled = !isDead && !isGrounded;
+        if (jetpackActive)
+        {
+            jetpackAudio.volume = 1.0f;
+        }
+        else
+        {
+            jetpackAudio.volume = 0.5f;
+        }
+    }
 
     // Handles collision with lasers and coins
     void OnTriggerEnter2D(Collider2D collider)
@@ -60,10 +86,14 @@ public class MouseController : MonoBehaviour
     // Marks the player as dead when hit by a laser
     void HitByLaser(Collider2D laserCollider)
     {
+        if (!isDead)
+        {
+            AudioSource laserZap = laserCollider.gameObject.GetComponent<AudioSource>();
+            laserZap.Play();
+        }
         isDead = true;
         mouseAnimator.SetBool("isDead", true);
     }
-
 
     // Adjusts the jetpack particle system based on whether the jetpack is active
     void AdjustJetpack(bool jetpackActive)
@@ -99,9 +129,12 @@ public class MouseController : MonoBehaviour
             playerRigidbody.linearVelocity = newVelocity;
         }
 
+        if (isDead && isGrounded)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
-
-
+        AdjustFootstepsAndJetpackSound(jetpackActive);
     }
 }

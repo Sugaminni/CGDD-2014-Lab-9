@@ -11,8 +11,7 @@ public class MouseController : MonoBehaviour
     private bool isGrounded;
     public LayerMask groundCheckLayerMask;
     private Animator mouseAnimator;
-
-
+    public ParticleSystem jetpack;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +30,22 @@ public class MouseController : MonoBehaviour
         mouseAnimator.SetBool("isGrounded", isGrounded);
     }
 
+    // Adjusts the jetpack particle system based on whether the jetpack is active
+    void AdjustJetpack(bool jetpackActive)
+    {
+        var jetpackEmission = jetpack.emission;
+        jetpackEmission.enabled = !isGrounded;
+        if (jetpackActive)
+        {
+            jetpackEmission.rateOverTime = 300.0f;
+        }
+        else
+        {
+            jetpackEmission.rateOverTime = 75.0f;
+        }
+    }
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -43,5 +58,6 @@ public class MouseController : MonoBehaviour
         newVelocity.x = forwardMovementSpeed;
         playerRigidbody.linearVelocity = newVelocity;
         UpdateGroundedStatus();
+        AdjustJetpack(jetpackActive);
     }
 }
